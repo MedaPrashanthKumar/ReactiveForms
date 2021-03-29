@@ -1,0 +1,213 @@
+  
+ 
+ 
+<!-- Form Creation -->
+ 
+<div class="container mt-3"style="border:2px solid black;">
+  <form [formGroup]="handsonform" >
+    
+
+    <div class="form-group">
+      <!-- Associate name -->
+       <h1> Form Validation<b style="color: red;"> *</b></h1>
+      
+        <input formControlName="AssociateName" type="text" id="AssociateName" placeholder="Associate Name" class="form-control " autocomplete="off">
+       
+
+        <!-- Validations of Associate Name -->
+        <div *ngIf="AssociateName.invalid && (AssociateName.dirty || AssociateName.touched)"
+        class=" text-danger">
+    
+                   <small *ngIf="AssociateName.errors.required">
+                    Please enter the AssociateName.
+                   </small>
+                    <small *ngIf="((AssociateName.errors.minlength) ||(AssociateName.errors.maxlength))">
+                           Accepts Alphabets , space  & Min 5 to Max 30 Char
+                    </small>
+                    <div *ngIf="handsonform.get('AssociateName').hasError('pattern')">  
+                       
+                     </div>  
+                      
+         </div>            
+</div>
+
+
+
+ <!-- Associate Id -->
+<div class="form-group mt-4">
+
+    <input type="text" formControlName="AssociateId" id="AssociateId" placeholder="Associate Id" class="form-control "autocomplete="off">
+            <!-- Validations of Associate ID -->
+    <div *ngIf="AssociateId.invalid && (AssociateId.dirty || AssociateId.touched)"
+        class=" text-danger">
+    
+                   <small *ngIf="AssociateId.errors.required">
+                    Please enter the Associate id.
+                   </small>
+                    <small *ngIf="((AssociateId.errors.minlength) ||(AssociateId.errors.maxlength))">
+                        Invalid AssociateId    
+                    </small>
+                      
+         </div>         
+  
+</div>
+
+
+
+
+
+<!-- Project ID -->
+<div class="form-group mt-4">
+
+  <input formControlName="ProjectID" type="text" id="ProjectID" placeholder="Project ID" class="form-control " autocomplete="off">
+    <!-- Validations of Project Id -->
+   <div *ngIf="ProjectID.invalid && (ProjectID.dirty || ProjectID.touched)"
+        class=" text-danger">
+    
+                   <small *ngIf="ProjectID.errors.required">
+                    Please enter the Project id.
+                   </small>
+                    <small *ngIf="((ProjectID.errors.minlength) ||(ProjectID.errors.maxlength))">
+                        Invalid Associate Id    
+                    </small>
+                      
+         </div>         
+
+</div>
+
+
+
+   <!-- Location -->
+   <div class="form-group pt-5">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input border-secondary" type="radio" style="margin-bottom: 30px;" name="location" value="Offshore" id="Off" formControlName="location" (change)="offLoc()">
+      <label class="form-check-label" for="Off"  >Offshore</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input border-secondary" type="radio" name="location" value="Onshore" id="On" formControlName="location" (change)="onLoc()">
+      <label class="form-check-label" for="On"  >Onshore</label>
+    </div>
+  </div>
+
+
+   <!-- Select Location -->
+  <div class="form-group">
+    <select class="form-select " aria-label="Default select example" formControlName="place">
+      <option [value]=obj *ngFor="let obj of display" >{{obj}}</option>
+     
+    </select>
+
+    <div class="text-danger" *ngIf="getControls().place.invalid && (getControls().place.dirty || getControls().place.touched)">
+      <p style="color:red;" *ngIf="getControls().place.errors?.required">*Please select location</p>
+    </div>
+  </div>
+ 
+
+
+   
+
+
+   <!-- Select skills -->
+   <div class="form-group" formGroupName="myCheckboxGroup">
+    <div class="label pt-5" style="font-size:25px;"><strong>Skills</strong></div>
+    <div class="row pt-2">
+      <div class="col-sm-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="html" id="myCheckbox1">
+          <label class="custom-control-label" for="myCheckbox1"  >HTML5,CSS3,JS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="sass" id="myCheckbox2">
+          <label class="custom-control-label" for="myCheckbox2"  >SASS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="es5" id="myCheckbox3">
+          <label class="custom-control-label" for="myCheckbox3"  >ES5,ES6,ES7..</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="bootstrap" id="myCheckbox4">
+          <label class="custom-control-label" for="myCheckbox4"  >Bootstrap 4</label>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="angular" id="myCheckbox5">
+          <label class="custom-control-label" for="myCheckbox5"  >Angular 8</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="react" id="myCheckbox6">
+          <label class="custom-control-label" for="myCheckbox6"  >React JS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="vue" id="myCheckbox7">
+          <label class="custom-control-label" for="myCheckbox7"  >Vue JS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="typescript" id="myCheckbox8">
+          <label class="custom-control-label" for="myCheckbox8"  >TypeScript</label>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="express" id="myCheckbox9">
+          <label class="custom-control-label" for="myCheckbox9"  >Express JS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="node" id="myCheckbox10">
+          <label class="custom-control-label" for="myCheckbox10"  >Node JS</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" formControlName="mongo" id="myCheckbox11">
+          <label class="custom-control-label" for="myCheckbox11"  >Mongo DB</label>
+        </div>
+      </div>
+    </div>
+      <div class="text-danger" *ngIf="getControls().myCheckboxGroup.invalid && (getControls().myCheckboxGroup.dirty || getControls().myCheckboxGroup.touched)">
+      <p style="color:red; " *ngIf="getControls().myCheckboxGroup.errors?.requireOneCheckboxToBeChecked">Please select Min 5 skills</p>
+    </div>
+  </div>
+
+
+
+
+
+
+        <!-- Upload File -->
+   <label for="upfile" class="mt-3"> Upload Profile</label>
+   <div class="form-group">
+
+                  <input formControlName="UploadProfile" type="file" class="form-control-file " id="upfile" class="mt-3"  ng-pattern="/^[a-zA-Z\s]*$/">
+                  <small *ngIf="UploadProfile.invalid && UploadProfile.touched" class="text-danger"> Please upload Profile Picture.</small> 
+    </div>
+
+    <!-- Comments -->
+      <div class="form-group mt-4">
+               <textarea formControlName="Comments" class="form-control" id="feedback" rows="4" placeholder="Comments"></textarea>
+               <small *ngIf="Comments.invalid && Comments.touched" class="text-danger"> Please Enter Comments.</small> 
+      </div>
+
+       <div class="form-group">
+                  <button (click)="clicksub()" [disabled]="handsonform.invalid" class="btn btn-primary mt-2 mb-1 " type="button"  style="margin:10px;"  >
+                    Submit
+                  </button>
+                 
+                
+                   <button (click)="clickreset()"  [disabled]="handsonform.invalid" class="btn btn-danger mt-2 mb-1" type="button" style="margin:10px;">
+                              Reset
+                   </button>
+       </div>
+ 
+ 
+
+
+
+
+
+</form>
+
+
+
+</div>
+<!-- Place holder directive -->
+
+<router-outlet></router-outlet>
